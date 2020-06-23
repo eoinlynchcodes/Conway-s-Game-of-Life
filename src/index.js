@@ -1,7 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { ButtonToolbar, Button, DropdownItem, DropdownButton } from "react-bootstrap";
+import {
+  ButtonToolbar,
+  Button,
+  DropdownItem,
+  DropdownButton,
+} from "react-bootstrap";
 
 class Box extends React.Component {
   selectBox = () => {
@@ -60,27 +65,75 @@ class Buttons extends React.Component {
     return (
       <div className="center">
         <ButtonToolbar>
-          <Button className="btn btn-default" onClick={this.props.playButton}>
-            Play
-          </Button>
-          <Button className="btn btn-default" onClick={this.props.pauseButton}>
-            Pause
-          </Button>
-          <Button className="btn btn-default" onClick={this.props.clear}>
-            Clear
-          </Button>
-          <Button className="btn btn-default" onClick={this.props.slow}>
-            Slow
-          </Button>
-          <Button className="btn btn-default" onClick={this.props.fast}>
-            Fast
-          </Button>
-          <Button className="btn btn-default" onClick={this.props.seed}>
+        <Button className="btn btn-default theButton" onClick={this.props.seed}>
             Seed
+          </Button>
+          <Button className="btn btn-default theButton" onClick={this.props.playButton}>
+            <svg
+              class="bi bi-play-fill"
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+            </svg>
+          </Button>
+          <Button className="btn btn-default theButton" onClick={this.props.pauseButton}>
+            <svg
+              class="bi bi-pause-fill"
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z" />
+            </svg>
+          </Button>
+          <Button className="btn btn-default theButton" onClick={this.props.clear}>
+            Reset
+          </Button>
+          <Button className="btn btn-default theButton" onClick={this.props.slow}>
+            <svg
+              class="bi bi-skip-backward-fill"
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M.5 3.5A.5.5 0 0 0 0 4v8a.5.5 0 0 0 1 0V4a.5.5 0 0 0-.5-.5z"
+              />
+              <path d="M.904 8.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V4.308c0-.63-.692-1.01-1.233-.696L.904 7.304a.802.802 0 0 0 0 1.393z" />
+              <path d="M8.404 8.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V4.308c0-.63-.693-1.01-1.233-.696L8.404 7.304a.802.802 0 0 0 0 1.393z" />
+            </svg>
+          </Button>
+          <Button className="btn btn-default theButton" onClick={this.props.fast}>
+            <svg
+              class="bi bi-skip-forward-fill"
+              width="1em"
+              height="1em"
+              viewBox="0 0 16 16"
+              fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M15.5 3.5a.5.5 0 0 1 .5.5v8a.5.5 0 0 1-1 0V4a.5.5 0 0 1 .5-.5z"
+              />
+              <path d="M7.596 8.697l-6.363 3.692C.693 12.702 0 12.322 0 11.692V4.308c0-.63.693-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+              <path d="M15.096 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.693-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
+            </svg>
           </Button>
           <DropdownButton
             title="Grid Size"
             id="size-menu"
+            color="red"
+            className="theButton"
             onSelect={this.handleSelect}
           >
             <DropdownItem eventKey="1">20x10</DropdownItem>

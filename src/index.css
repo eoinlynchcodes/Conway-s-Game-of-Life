@@ -12,11 +12,11 @@ body {
   }
 
 .off {
-  background-color: lightgray;
+  background-color: black;
 }
 
 .on {
-  background-color: green;
+  background-color: red;
 }
   
 .box:hover { 
@@ -47,4 +47,8 @@ h1, h2, h3, h4 {
 
 h4 {
   margin-top: 0px;
+}
+
+.theButton{
+  color: red;
 }
