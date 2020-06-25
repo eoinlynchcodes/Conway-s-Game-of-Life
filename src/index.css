@@ -1,5 +1,6 @@
 body {
-  background-image: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/squares.png) 
+  background-image: url('/snake.jpg'); 
+  background-color: aqua;
 }
   
 .box {
@@ -38,7 +39,7 @@ body {
 }
   
 h1, h2, h3, h4 {
-  color: white;
+  color: black;
   margin: auto;
   text-align: center;
   width: 50%;
@@ -47,8 +48,4 @@ h1, h2, h3, h4 {
 
 h4 {
   margin-top: 0px;
-}
-
-.theButton{
-  color: red;
 }

@@ -65,10 +65,10 @@ class Buttons extends React.Component {
     return (
       <div className="center">
         <ButtonToolbar>
-        <Button className="btn btn-default theButton" onClick={this.props.seed}>
+        <Button className="btn btn-default" onClick={this.props.seed}>
             Seed
           </Button>
-          <Button className="btn btn-default theButton" onClick={this.props.playButton}>
+          <Button className="btn btn-default" onClick={this.props.playButton}>
             <svg
               class="bi bi-play-fill"
               width="1em"
@@ -80,7 +80,7 @@ class Buttons extends React.Component {
               <path d="M11.596 8.697l-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z" />
             </svg>
           </Button>
-          <Button className="btn btn-default theButton" onClick={this.props.pauseButton}>
+          <Button className="btn btn-default" onClick={this.props.pauseButton}>
             <svg
               class="bi bi-pause-fill"
               width="1em"
@@ -92,10 +92,13 @@ class Buttons extends React.Component {
               <path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z" />
             </svg>
           </Button>
-          <Button className="btn btn-default theButton" onClick={this.props.clear}>
+          <Button className="btn btn-default" onClick={this.props.clear}>
             Reset
           </Button>
-          <Button className="btn btn-default theButton" onClick={this.props.slow}>
+          <Button className="btn btn-default" onClick={this.props.block}>
+            Make a Box
+          </Button>
+          <Button className="btn btn-default" onClick={this.props.slow}>
             <svg
               class="bi bi-skip-backward-fill"
               width="1em"
@@ -112,7 +115,8 @@ class Buttons extends React.Component {
               <path d="M8.404 8.697l6.363 3.692c.54.313 1.233-.066 1.233-.697V4.308c0-.63-.693-1.01-1.233-.696L8.404 7.304a.802.802 0 0 0 0 1.393z" />
             </svg>
           </Button>
-          <Button className="btn btn-default theButton" onClick={this.props.fast}>
+
+          <Button className="btn btn-default" onClick={this.props.fast}>
             <svg
               class="bi bi-skip-forward-fill"
               width="1em"
@@ -133,7 +137,6 @@ class Buttons extends React.Component {
             title="Grid Size"
             id="size-menu"
             color="red"
-            className="theButton"
             onSelect={this.handleSelect}
           >
             <DropdownItem eventKey="1">20x10</DropdownItem>
@@ -152,7 +155,6 @@ class Main extends React.Component {
     this.speed = 100;
     this.rows = 30;
     this.cols = 50;
-
     this.state = {
       generation: 0,
       gridFull: Array(this.rows)
@@ -166,6 +168,25 @@ class Main extends React.Component {
     gridCopy[row][col] = !gridCopy[row][col];
     this.setState({
       gridFull: gridCopy,
+    });
+  };
+
+  block = () => {
+    console.log('clicked');
+    let gridCopy = arrayClone(this.state.gridFull);
+    let halfrow = this.rows / 2;
+    let halfcols = this.cols / 2;
+    for (let i = 0; i < halfrow; i++){
+      for (let j = 0; j < halfcols; j++){
+          gridCopy[i][j] = true;
+      }
+    }
+    // gridCopy[0][0] = true
+    // gridCopy[1][1] = true
+    // gridCopy[0][1] = true
+    // gridCopy[1][0] = true
+      this.setState({
+      gridFull: gridCopy
     });
   };
 
@@ -263,7 +284,7 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <h1>The Game of Life</h1>
+        <h1>The Game of Life by Eoin Lynch</h1>
         <Buttons
           playButton={this.playButton}
           pauseButton={this.pauseButton}
@@ -272,6 +293,7 @@ class Main extends React.Component {
           clear={this.clear}
           seed={this.seed}
           gridSize={this.gridSize}
+          block={this.block}
         />
         <Grid
           gridFull={this.state.gridFull}
@@ -280,6 +302,23 @@ class Main extends React.Component {
           selectBox={this.selectBox}
         />
         <h2>Generations: {this.state.generation}</h2>
+        <br/>
+        <br/>
+        <div>
+        <h3><u>About Cellular Automata / Conway's Game of Life</u></h3>
+        <p>
+          John Conway created the game of life in 1970. It simulates a Turing machine. 
+        </p>
+        <p><u>The Rules are as follows:</u></p>
+        <ul>
+        <li>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</li> 
+        <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+        <li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
+        <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
+        </ul>
+        
+      </div>
+
       </div>
     );
   }
