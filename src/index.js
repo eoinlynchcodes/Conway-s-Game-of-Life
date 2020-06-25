@@ -65,7 +65,7 @@ class Buttons extends React.Component {
     return (
       <div className="center">
         <ButtonToolbar>
-        <Button className="btn btn-default" onClick={this.props.seed}>
+          <Button className="btn btn-default" onClick={this.props.seed}>
             Seed
           </Button>
           <Button className="btn btn-default" onClick={this.props.playButton}>
@@ -172,21 +172,21 @@ class Main extends React.Component {
   };
 
   block = () => {
-    console.log('clicked');
+    console.log("clicked");
     let gridCopy = arrayClone(this.state.gridFull);
     let halfrow = this.rows / 2;
     let halfcols = this.cols / 2;
-    for (let i = 0; i < halfrow; i++){
-      for (let j = 0; j < halfcols; j++){
-          gridCopy[i][j] = true;
+    for (let i = 0; i < halfrow; i++) {
+      for (let j = 0; j < halfcols; j++) {
+        gridCopy[i][j] = true;
       }
     }
     // gridCopy[0][0] = true
     // gridCopy[1][1] = true
     // gridCopy[0][1] = true
     // gridCopy[1][0] = true
-      this.setState({
-      gridFull: gridCopy
+    this.setState({
+      gridFull: gridCopy,
     });
   };
 
@@ -284,7 +284,9 @@ class Main extends React.Component {
   render() {
     return (
       <div>
-        <h1>The Game of Life by Eoin Lynch</h1>
+        <nav>
+          <h1>The Game of Life<br/> by Eoin Lynch</h1>
+        </nav>
         <Buttons
           playButton={this.playButton}
           pauseButton={this.pauseButton}
@@ -302,23 +304,39 @@ class Main extends React.Component {
           selectBox={this.selectBox}
         />
         <h2>Generations: {this.state.generation}</h2>
-        <br/>
-        <br/>
-        <div>
-        <h3><u>About Cellular Automata / Conway's Game of Life</u></h3>
-        <p>
-          John Conway created the game of life in 1970. It simulates a Turing machine. 
-        </p>
-        <p><u>The Rules are as follows:</u></p>
-        <ul>
-        <li>Any live cell with fewer than two live neighbours dies, as if by underpopulation.</li> 
-        <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
-        <li>Any live cell with more than three live neighbours dies, as if by overpopulation.</li>
-        <li>Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.</li>
-        </ul>
-        
-      </div>
-
+        <br />
+        <br />
+        <div class="container">
+          <h3>
+            <u>About Cellular Automata / Conway's Game of Life</u>
+          </h3>
+          <br />
+          <p>
+            John Conway created the game of life in 1970. It simulates a Turing
+            machine and colours squares on or off through an algorithm.
+          </p>
+          <p>
+            <u>The Rules are as follows:</u>
+          </p>
+          <ul>
+            <li>
+              Any live cell with fewer than two live neighbours dies, as if by
+              underpopulation.
+            </li>
+            <li>
+              Any live cell with two or three live neighbours lives on to the
+              next generation.
+            </li>
+            <li>
+              Any live cell with more than three live neighbours dies, as if by
+              overpopulation.
+            </li>
+            <li>
+              Any dead cell with exactly three live neighbours becomes a live
+              cell, as if by reproduction.
+            </li>
+          </ul>
+        </div>
       </div>
     );
   }
