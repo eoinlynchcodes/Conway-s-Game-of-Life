@@ -172,7 +172,6 @@ class Main extends React.Component {
   };
 
   block = () => {
-    console.log("clicked");
     let gridCopy = arrayClone(this.state.gridFull);
     let halfrow = this.rows / 2;
     let halfcols = this.cols / 2;
@@ -181,10 +180,6 @@ class Main extends React.Component {
         gridCopy[i][j] = true;
       }
     }
-    // gridCopy[0][0] = true
-    // gridCopy[1][1] = true
-    // gridCopy[0][1] = true
-    // gridCopy[1][0] = true
     this.setState({
       gridFull: gridCopy,
     });
@@ -285,7 +280,10 @@ class Main extends React.Component {
     return (
       <div>
         <nav>
-          <h1>The Game of Life<br/> by Eoin Lynch</h1>
+          <h1>
+            The Game of Life
+            <br /> by Eoin Lynch
+          </h1>
         </nav>
         <Buttons
           playButton={this.playButton}
@@ -312,30 +310,45 @@ class Main extends React.Component {
           </h3>
           <br />
           <p>
-            John Conway created the game of life in 1970. It simulates a Turing
-            machine and colours squares on or off through an algorithm.
+            The Game of Life is a cellular-automaton, zero player game,
+            developed by John Conway in 1970. The game is played on an infinite
+            grid of square cells, and its evolution is only determined by its
+            initial state. It is to me like a simulation of life as a person in a community. 
+            <br />
+            The reason it is called a game is because people who play the game
+            can set it up in different ways to make it do different things.
+            Sometimes people play the game by changing the way the imaginary
+            robot is set up at the start to watch what happens. The Game of Life
+            is a zero-player game because it changes without anybody playing
+            (after the starting position is chosen). A different type of game
+            lets two players set up imaginary robots to see which one is better.
+            <br />            <br />
+            The rules of the game are simple, and describe the evolution of the
+            grid:            <br />
+            <br />
+            <ul>
+              <li>
+                Birth: a cell that is dead at time t will be alive at time t + 1
+                if exactly 3 of its eight neighbors were alive at time t. <br />
+              </li>
+              <li>
+                Death: a cell can die by: Overcrowding: if a cell is alive at
+                time t + 1 and 4 or more of its neighbors are also alive at time
+                t, the cell will be dead at time t + 1. <br />
+              </li>
+              <li>
+                Exposure: If a live cell at time t has only 1 live neighbor or
+                no live neighbors, it will be dead at time t + 1.
+              </li>
+              <li>
+                Survival: a cell survives from time t to time t + 1 if and only
+                if 2 or 3 of its neighbors are alive at time t.
+              </li>
+            </ul>
+            <br />
+            Starting from the initial configuration, these rules are applied,
+            and the game board evolves, playing the game by itself!
           </p>
-          <p>
-            <u>The Rules are as follows:</u>
-          </p>
-          <ul>
-            <li>
-              Any live cell with fewer than two live neighbours dies, as if by
-              underpopulation.
-            </li>
-            <li>
-              Any live cell with two or three live neighbours lives on to the
-              next generation.
-            </li>
-            <li>
-              Any live cell with more than three live neighbours dies, as if by
-              overpopulation.
-            </li>
-            <li>
-              Any dead cell with exactly three live neighbours becomes a live
-              cell, as if by reproduction.
-            </li>
-          </ul>
         </div>
       </div>
     );
